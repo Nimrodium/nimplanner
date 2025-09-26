@@ -7,34 +7,20 @@
         * interactive
     
     ## cli interface
-    * add
-    * rm
-    * edit
-    * 
+    * add <task>
+    * rm <task>
+    * edit <task> 
+    * mark <task> --<status>
+    
+    ### flags
+    * --gui 
+    * --complete | -c
+    * --inprogress | -p
+    * --nottouched | -t
+    * --help | -h
 
 */
+mod task;
 fn main() {
     println!("Hello, world!");
-}
-
-enum Status{
-    NotTouched,
-    InProgress
-    Complete,
-
-}
-
-pub struct NoteEntry{
-    title:String,
-    body:String,
-    date:u64,
-}
-
-pub struct Task {
-    name:String,
-    details:String,
-    date_entered:u64, // unix timestamp likely maybe ill make a wrapper class or just import a crate for it
-    date_due:u64,
-    status:Status
-    notes:Vec<NoteEntry>,
 }
