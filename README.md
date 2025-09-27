@@ -9,17 +9,16 @@ cli and gui(?) application written in rust to keep track of plans and assignment
 ## CLI interface
 generally, each subcommand operates on a task, and flags can be appended to the operation to influence their output
 ### subcommands
-* `add <task>`
-> adds a new task
+* `add <task>` | `a`
+> adds a new task 
 * `rm <task>`
 > deletes a task
-* `edit <task>`
-> enters interactive editing interface
-* `mark <task>`
-> changes status of task
+* `edit <task>` | `e`
+> modify a task
 * `ls <task>`
 > list tasks
-
+* `undo`
+> undos previous action and restores a previous snapshot
 
 ### flags
 grouping flags
@@ -42,6 +41,8 @@ due flags
 misc flags
 * `--gui`
 * `--help` | `-h`
+> show help information
+* `--all` | `-a`
 
 ### usage
 * creating a new task due tomorrow
@@ -51,7 +52,7 @@ misc flags
 ```
 * mark a task as complete
 ```sh
-    nplan mark CSA-2.1 --complete
+    nplan edit CSA-2.1 --complete
 ```
 
 * delete a task
@@ -76,4 +77,8 @@ misc flags
     nplan ls --incomplete
 ```
 
-# GUI 
+# Details
+once compiled the binary is called `nplan`
+nimplanner uses a json backed database in `~/.local/share/nimplanner/db/`
+nimplanner utilizes fuzzy finding of task names.
+
