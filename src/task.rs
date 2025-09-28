@@ -1,37 +1,28 @@
-#[derive(PartialEq,Eq)]
-enum Status{
+use serde::{Deserialize, Serialize};
+
+use crate::unix_time::UnixStamp;
+#[derive(PartialEq,Eq,Serialize,Deserialize,Debug)]
+#[repr(u8)]
+pub enum Status{
     NotTouched,
     InProgress,
     Complete,
 }
 
-/// status on how long until a task is due
-enum DueStatus{
-    Upcoming(usize),
-    Tomorrow,
-    Today,
-    Late(usize)
-}
-
-impl DueStatus{
-
-}
-
+#[derive(Debug, Serialize, Deserialize)]
 pub struct NoteEntry{
     title:String,
     body:String,
-    date:u64,
+    date:UnixStamp,
 }
-
+#[derive(Serialize,Deserialize,Debug)]
 pub struct Task {
     name:String,
     details:String,
     status:Status,
     notes:Vec<NoteEntry>,
-    
-    date_entered:u64, // unix timestamp likely maybe ill make a wrapper class or just import a crate for it
-    date_due:u64,
-    due_status:DueStatus,
+    date_entered:UnixStamp, // unix timestamp likely maybe ill make a wrapper class or just import a crate for it
+    date_due:UnixStamp,
 }
 impl Task{
     pub fn new() -> Self {
@@ -40,10 +31,8 @@ impl Task{
             details: todo!(),
             status: todo!(),
             notes: todo!(),
-
             date_entered: todo!(),
             date_due: todo!(),
-            due_status: DueStatus::Upcoming(1)
         }
     }
     /// returns true if status changed, false if new status and old status are the same
@@ -54,8 +43,5 @@ impl Task{
     }
     pub fn set_due(&mut self,due_stamp:u64){
         todo!()
-    }
-    pub fn get_due_status(&self) -> DueStatus{
-        
     }
 }

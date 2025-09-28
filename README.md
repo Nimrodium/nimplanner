@@ -19,7 +19,12 @@ generally, each subcommand operates on a task, and flags can be appended to the 
 > changes status of task
 * `ls <task>`
 > list tasks
-
+* `note <task>`
+> enter new note about task
+* `graph`
+> generates graph
+* `summary`
+> one-liner overview
 
 ### flags
 grouping flags
